@@ -2,6 +2,11 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { createMcpServer } from "./server.mjs";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import { authMiddleware } from "./authMiddleware.mjs";
+
+const MCP_AUTH_ISSUER = process.env.MCP_AUTH_ISSUER!;
+const AUTH_CLIENT_ID = process.env.AUTH_CLIENT_ID!;
+const AUTH_CLIENT_SECRET = process.env.AUTH_CLIENT_SECRET!;
 
 function buildExpressApp() {
   const app = express();
@@ -17,7 +22,12 @@ function buildExpressApp() {
     allowedHeaders: ['Content-Type', 'Authorization', 'MCP-Session-Id']
   }));
   app.use(express.json());
-  // app.use(authMiddleware({ mcpPath: '/mcp' }));
+  app.use(authMiddleware({
+    mcpPath: '/mcp',
+    authIssuer: MCP_AUTH_ISSUER,
+    authClientId: AUTH_CLIENT_ID,
+    authClientSecret: AUTH_CLIENT_SECRET
+  }));
 
   app.post('/mcp', async (req: Request, res: Response) => {
     // In stateless mode, create a new instance of transport and server for each request
