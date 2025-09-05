@@ -42,7 +42,6 @@ The following environment variables are required, add the following structure in
 ```toml
 [env]
 MCP_AUTH_ISSUER = "<YOUR PREFACTOR MCP ISSUER>"
-AUTH_ISSUER = "<YOUR PREFACTOR ISSUER>"
 AUTH_CLIENT_ID = "<YOUR PREFACTOR CLIENT ID>"
 AUTH_CLIENT_SECRET = "<YOUR PREFACTOR CLIENT SECRET>"
 ```
