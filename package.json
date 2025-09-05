@@ -1,0 +1,25 @@
+{
+  "name": "mcp-prefactor-demo",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "private": true,
+  "author": "hello@prefactor.tech",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.1",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "typescript": "^5.9.2",
+    "zod": "^3.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/index.mjs"
+  }
+}
