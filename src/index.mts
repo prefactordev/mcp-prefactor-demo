@@ -11,6 +11,9 @@ const AUTH_CLIENT_SECRET = process.env.AUTH_CLIENT_SECRET!;
 function buildExpressApp() {
   const app = express();
 
+  // NOTE: Don't do this in production, it's here so ngrok works
+  app.set('trust proxy', 1);
+
   app.use((req, _res, next) => {
     console.log(`${req.method} ${req.originalUrl}`);
     next();
