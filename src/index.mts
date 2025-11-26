@@ -22,7 +22,7 @@ function buildExpressApp() {
   app.use(cors({
     origin: true,
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'MCP-Session-Id']
+    allowedHeaders: ['Content-Type', 'Authorization', 'MCP-Session-Id', 'MCP-Protocol-Version']
   }));
   app.use(express.json());
   app.use(authMiddleware({
